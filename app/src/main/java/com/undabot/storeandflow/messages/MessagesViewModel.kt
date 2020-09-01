@@ -8,14 +8,15 @@ import com.undabot.storeandflow.domain.interactors.StreamMessages
 import com.undabot.storeandflow.domain.model.Message
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import com.undabot.storeandflow.domain.interactors.util.invoke
 
 class MessagesViewModel(
-  streamQuestions: StreamMessages
+  streamMessages: StreamMessages
 ) : ViewModel() {
   val state = MutableLiveData<MessagesViewState>()
 
   init {
-    streamQuestions()
+    streamMessages()
       .map { response ->
         when (response) {
           is Loading -> state.value = MessagesViewState.Loading

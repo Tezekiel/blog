@@ -1,12 +1,17 @@
 package com.undabot.storeandflow.domain.interactors
 
-import com.undabot.storeandflow.domain.repository.MessagesRepository
+import com.undabot.storeandflow.data.repository.MessagesRepository
+import com.undabot.storeandflow.domain.interactors.util.ExecutionDispatchers
+import com.undabot.storeandflow.domain.interactors.util.ResultInteractor
 
 class DeleteMessage(
-  private val repository: MessagesRepository
-) {
+  private val repository: MessagesRepository,
+  executionDispatchers: ExecutionDispatchers
+) : ResultInteractor<String, Unit>() {
 
-  suspend operator fun invoke(id: String) {
-    return repository.deleteMessage(id)
+  override val dispatcher = executionDispatchers.io
+
+  override suspend fun doWork(params: String) {
+    return repository.deleteMessage(params)
   }
 }

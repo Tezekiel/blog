@@ -15,7 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MessageDetailActivity : AppCompatActivity() {
 
   companion object {
-  private const val TYPE = "1234"
+  private const val TYPE = "message_type"
   fun with(context: Context, type: String ): Intent =
     Intent(context, MessageDetailActivity::class.java).putExtra(TYPE, type)
 }

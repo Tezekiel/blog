@@ -12,9 +12,10 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import com.undabot.storeandflow.domain.interactors.util.invoke
 
 class MessageDetailViewModel(
-  streamQuestions: StreamMessages,
+  streamMessages: StreamMessages,
   val deleteMessage: DeleteMessage
 ) : ViewModel() {
 
@@ -26,7 +27,7 @@ class MessageDetailViewModel(
     event
       .asFlow()
       .flatMapLatest { type ->
-        streamQuestions()
+        streamMessages()
           .map { response ->
             when (response) {
               is Loading -> state.value = MessageDetailViewState.Loading

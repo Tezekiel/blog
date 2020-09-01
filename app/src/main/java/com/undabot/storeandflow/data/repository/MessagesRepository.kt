@@ -1,4 +1,4 @@
-package com.undabot.storeandflow.domain.repository
+package com.undabot.storeandflow.data.repository
 
 import com.dropbox.android.external.store4.StoreResponse
 import com.undabot.storeandflow.domain.model.Message
